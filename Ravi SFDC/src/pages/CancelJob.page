@@ -1,0 +1,9 @@
+<apex:page sideBar="false" showHeader="false">
+	<div align="center" style="background-color:pink;width:100%">
+		<br/><br/><br/>
+		<div align="left" style="width:95%;font-size:16px">
+			<B>Your Print job has been canceled. To return to the start and submit a new print job. Click the start button below.</B>
+		</div>
+		<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	</div>
+</apex:page>

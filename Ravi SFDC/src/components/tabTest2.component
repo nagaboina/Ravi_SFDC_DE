@@ -1,0 +1,6 @@
+<apex:component controller="tabTestClass2">
+   
+       <apex:outputLabel value="This is Second Tab" /> <br/>
+       
+   
+</apex:component>

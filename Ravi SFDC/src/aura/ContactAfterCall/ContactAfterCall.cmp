@@ -1,0 +1,71 @@
+<aura:component controller="CreateAccntCallDetail" 
+				implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" 
+				access="global" >
+    
+    <!-- Include Static Resource-->
+    <ltng:require styles="/resource/bootstrap/css/bootstrap.min.css" 
+				  scripts="/resource/bootstrap/js/jquery.js,/resource/bootstrap/js/bootstrap.min.js"/>
+    
+    <!-- Define Attribute-->
+	
+	<aura:attribute name="Afterhourcall" type="Afterhourcall__c" default="{'sobjectType': 'Afterhourcall__c',
+                         'Name': '',
+                         'CommunicationMethod__c': '',
+                         'Call_Start_Date__c': '', 
+                         'Call_End_Date__c': '',
+						 'Reason__c': '',
+                         'Comments__c': '',                                          
+						 'AccountId__c':'',
+						 'Account_Store__c':''
+                       }"/>
+	<aura:attribute name="recordId" type="string" default="{!v.recordId}" />
+	<aura:attribute name="ClassObj" type="CreateAccntCallDetail"/>
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="container-fluid">
+        <h3>Please Enter the Information</h3>
+        <div class="form-group">
+            <div class="slds-is-active">
+            <label>Account</label>
+            <ui:inputText class="slds-col slds-media slds-media--center" disabled="true" value="{!v.Afterhourcall.Account_Store__c}" />
+            <div style="display:none;">
+            	<ui:inputText value="{!v.Afterhourcall.AccountId__c}" />
+            </div>
+        </div>
+            <label>Name</label>
+            <ui:inputText class="form-control" value="{!v.Afterhourcall.Name}" disabled="{!v.ClassObj.isDisable}"/>
+        </div>
+		<div class="form-group">
+            <!--<ui:inputSelect label="Communication Method" class="dynamic" aura:id="InputSelectDynamic" value="{!v.Afterhourcall.CommunicationMethod__c}" required="true"/> -->
+			<ui:inputSelect aura:id="comMethods" disabled="{!v.ClassObj.isDisable}" label="Communication Method" value="{!v.Afterhourcall.CommunicationMethod__c}">
+                <aura:iteration items="{!v.ClassObj.CommunicationMethods}" var="level">
+                     <ui:inputSelectOption text="{!level}" label="{!level}"/>
+                </aura:iteration>
+            </ui:inputSelect>
+        </div>
+		
+        <div class="form-group">
+            <label>Call Start Date</label>
+            <ui:inputDateTime aura:id="Call Start Date" class="form-control" disabled="{!v.ClassObj.isDisable}" value="{!v.Afterhourcall.Call_Start_Date__c}" displayDatePicker="true" />
+        </div>
+         <div class="form-group">
+            <label>Call End Date</label>
+             <ui:inputDateTime aura:id="Call End Date" class="form-control" disabled="{!v.ClassObj.isDisable}" value="{!v.Afterhourcall.Call_End_Date__c}" displayDatePicker="true" />
+        </div>
+        <div class="form-group">
+            <!-- <ui:inputSelect label="Reason" class="dynamic" aura:id="InputReasonDynamic" value="{!v.Afterhourcall.Reason__c}" required="true"/> -->
+            <ui:inputSelect aura:id="selReason" label="Reason" disabled="{!v.ClassObj.isDisable}" value="{!v.Afterhourcall.Reason__c}">
+                <aura:iteration items="{!v.ClassObj.Reasons}" var="level">
+                     <ui:inputSelectOption text="{!level}" label="{!level}"/>
+                </aura:iteration>
+            </ui:inputSelect>
+        </div>
+		<div class="form-group">
+            <label>Comments</label>
+            <ui:inputText class="form-control" disabled="{!v.ClassObj.isDisable}" value="{!v.Afterhourcall.Comments__c}"/>
+        </div>
+    </div>
+    <div class="col-md-4 text-center">
+        <ui:button class="btn btn-default" disabled="{!v.ClassObj.isDisable}" press="{!c.create}">Save</ui:button>
+  </div>
+</aura:component>

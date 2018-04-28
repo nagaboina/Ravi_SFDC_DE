@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StaticResource xmlns="http://soap.sforce.com/2006/04/metadata">
+    <cacheControl>Public</cacheControl>
+    <contentType>application/octet-stream</contentType>
+    <description>This is a .jar file contains the JZebra .Classes.
+Which is used in PrintTest Page to print the Stream to Zebra Thermal Printer</description>
+</StaticResource>

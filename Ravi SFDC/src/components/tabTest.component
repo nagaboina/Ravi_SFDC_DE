@@ -1,0 +1,6 @@
+<apex:component controller="tabTestClass2">
+   
+       <apex:outputLabel value="This is First Tab" /> <br/>
+       <apex:commandButton value="Activate Tab Two" action="{!tabTwoAcn}"/>
+   
+</apex:component>

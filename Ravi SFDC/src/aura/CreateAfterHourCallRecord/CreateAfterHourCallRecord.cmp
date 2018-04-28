@@ -1,0 +1,77 @@
+<aura:component controller="CreateContactRecord" 
+				implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" 
+				access="global" >
+	<link href="assets/styles/salesforce-lightning-design-system-vf.css" rel="stylesheet"/>    
+    <!-- Include Static Resource-->
+    <ltng:require styles="/resource/bootstrap/css/bootstrap.min.css" 
+				  scripts="/resource/bootstrap/js/jquery.js,/resource/bootstrap/js/bootstrap.min.js"/>
+    
+    <!-- Define Attribute-->
+    <aura:attribute name="candidate" type="Contact" default="{'sobjectType': 'Contact',
+                         'FirstName': '',
+                         'LastName': '',
+                         'Email': '', 
+                         'MobilePhone': '',
+						 'Level__c':'',
+						 'AccountId':'',
+						 'Languages__c':''
+                       }"/>
+    
+    <aura:attribute name="recordId" type="string" default="{!v.recordId}" />
+    <aura:attribute name="ClassObj" type="CreateContactRecord"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="container-fluid">
+        <h3>Please Enter The Candidate Information</h3>
+        <div class="slds-is-active">
+            <label>Account Name</label>
+            <!--<ui:outputText class="form-control" aura:id="recid" value="{!v.recordId}" />-->
+            <ui:inputText class="slds-col slds-media slds-media--center" disabled="true" value="{!v.candidate.Languages__c}" />
+            <div style="display:none;">
+            	<ui:inputText value="{!v.candidate.AccountId}" />
+            </div>            
+        </div>
+        <div class="slds-is-active">
+            <label>First Name</label>
+            <ui:inputText class="slds-col slds-media slds-media--center" value="{!v.candidate.FirstName}"/>
+        </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <ui:inputText class="form-control" value="{!v.candidate.LastName}"/>
+        </div>
+        <div class="form-group">
+            <label>Email Address</label>
+            <ui:inputText class="form-control" value="{!v.candidate.Email}"/>
+        </div>
+        <div class="form-group">
+            <label>SSN</label>
+            <ui:inputText class="form-control" value="{!v.candidate.MobilePhone}"/>
+        </div>
+        <div class="form-group">
+            <label>Level</label>
+            <!--<ui:inputSelect class="dynamic" aura:id="InputSelectDynamic" value="{!v.candidate.Level__c}" required="true"/> 
+        -->
+        	<ui:inputSelect aura:id="levels" label="Contact Levels" value="{!v.candidate.Level__c}">
+                <aura:iteration items="{!v.ClassObj.ContatLevels}" var="level">
+                     <ui:inputSelectOption text="{!level}" label="{!level}"/>
+                </aura:iteration>
+            </ui:inputSelect>
+        </div>
+        <div class="form-group">
+            <label>Level</label>
+            <!--<ui:inputSelect class="dynamic" aura:id="InputSelectDynamic" value="{!v.candidate.Level__c}" required="true"/> 
+        -->
+        	<ui:inputSelect aura:id="levels" label="Contact Levels" value="{!v.candidate.LeadSource}">
+                <aura:iteration items="{!v.ClassObj.LeadSources}" var="level">
+                     <ui:inputSelectOption text="{!level}" label="{!level}"/>
+                </aura:iteration>
+            </ui:inputSelect>
+        </div>
+    </div>
+    <div class="col-md-4 text-center">
+        <ui:button class="btn btn-default" press="{!c.create}">Create</ui:button>
+  </div>
+    
+    
+    
+</aura:component>

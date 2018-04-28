@@ -1,0 +1,13 @@
+<apex:page >
+
+    <apex:form >
+       <apex:tabPanel >
+          <apex:tab label="One">
+            <c:tabTest />
+        </apex:tab>
+        <apex:tab label="Two">
+            <c:tabTest2 />
+        </apex:tab>
+       </apex:tabPanel>
+    </apex:form>
+</apex:page>

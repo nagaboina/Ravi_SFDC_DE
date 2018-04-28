@@ -1,0 +1,46 @@
+<apex:page controller="PrintJobClass" showHeader="false" sidebar="false">
+    <apex:form >
+        <div style="background-color:pink;">
+            <br/><br/>
+            <div align="center">
+                <div style="width:95%">
+                    <div align="left" style="background-color:#66A3C2;font-size:15px;">
+                        <B>Job Details</B>
+                    </div>
+                    <div align="left" style="width:95%">
+                        <table>
+                                <tr><td>JobID:</td><td>&nbsp;&nbsp;&nbsp;&nbsp;<apex:outputText value="{!JobId}"/></td></tr>
+                                <tr><td>PrinterID:</td><td>&nbsp;&nbsp;&nbsp;&nbsp;<apex:outputText value="{!PrinterId}"/></td></tr>
+                                <tr><td>Pages:</td><td>&nbsp;&nbsp;&nbsp;&nbsp;<apex:outputText value="{!Pages}"/></td></tr>
+                                <tr><td>Cost:</td><td>&nbsp;&nbsp;&nbsp;&nbsp;<apex:outputText value="{!Cost}"/></td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <br/><br/>
+            <div align="center">
+                <div style="width:95%">
+                    <div align="left" style="background-color:#66A3C2;font-size:15px;">
+                        <B>Authentication</B>
+                    </div>
+                    <div align="left" style="width:95%">
+                        Enter your Unique PinCode and verify to confirm your Credentials<br/>
+                        <apex:inputText value="{!Pincode}"/><apex:commandButton value="Verify" action="{!verify}" reRender="get" status="status"/>
+                        <apex:actionStatus id="status" startText="verifying......"/>
+                    </div>
+                    <apex:outputpanel id="get">
+                        <div align="left" style="width:95%">
+	                        <div style="width:50%">
+	                        	<apex:PageMessages />
+	                        </div>
+	                        <apex:commandButton value="Authorize Job" action="{!AuthorizeJob}" disabled="{!RenderAuthorize}"/>
+	                        <apex:commandButton value="Cancel Job" action="{!Canceljob}"/>
+	                        
+                        </div>
+                    </apex:outputpanel>
+                </div>
+            </div>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        </div>
+    </apex:form>
+</apex:page>
