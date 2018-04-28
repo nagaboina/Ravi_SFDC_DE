@@ -35,6 +35,7 @@ public class AddRelatedRecordTest {
         lc.setConvertedStatus('Closed - Converted');
         
         Database.LeadConvertResult lcr = Database.convertLead(lc);
+        system.debug('Test Git');
         
     }
 }
